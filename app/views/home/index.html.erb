@@ -1,0 +1,24 @@
+<h1>米の会</h1>
+
+<table class="table" >
+  <tr>
+    <th>日付</th>
+    <% @users.each do |user| %>
+    <th><%= user.name %></th>
+    <% end %>
+    <th>計</th>
+  </tr>
+  <% (Date.today..(Date.today+7.day)).each do|day| %>
+  <tr>
+    <th><%= day %></th>
+    <% @users.each do |user| %>
+      <% if @schedule[day].include?(user.id) %>
+        <th><%= link_to '食べる!', eat_user_path(user.id, date: day), method: :delete, remote: true, class: "btn btn-danger", id: "#{user.id}-#{day}" %></th>
+      <% else%>
+        <th><%= link_to '食べない', eat_user_path(user.id, date: day), method: :post, remote: true, class: "btn btn-default", id: "#{user.id}-#{day}" %></th>
+      <% end %>
+    <% end %>
+    <th><%= @schedule[day].count %></th>
+  </tr>
+  <% end %>
+</table> 

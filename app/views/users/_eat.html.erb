@@ -1,0 +1,1 @@
+<%= link_to '食べる', eat_user_path(@user.id, date: @day), method: :delete, remote: true, class: "btn btn-info", id: "#{@user.id} -#{@day}" %>

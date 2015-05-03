@@ -1,0 +1,2 @@
+$("a#<%= @id %>").replaceWith("<%= escape_javascript(link_to '食べる!', eat_user_path(@user.id, date: @day), method: :delete, remote: true, class: "btn btn-danger", id: "#{@user.id}-#{@day}") %>")
+
