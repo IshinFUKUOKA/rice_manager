@@ -1,1 +1,2 @@
-$("a#<%= @id %>").replaceWith("<%= escape_javascript(link_to '食べない', eat_user_path(@user.id, date: @day), method: :post, remote: true, class: "btn btn-default", id: "#{@user.id}-#{@day}") %>")
+$("a#<%= @id %>").replaceWith("<%= escape_javascript(render 'users/dont', user: @user, day: @day, time: @time) %>")
+$("#<%= "#{@day}-#{@time}" %>-count").html(Number($("#<%= "#{@day}-#{@time}" %>-count").html()) - 1 )

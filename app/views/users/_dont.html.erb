@@ -1,0 +1,2 @@
+<% key = "#{user.id}-#{day}-#{time}" %>
+<%= link_to '食べない', eat_user_path(user.id, date: day, time: time), method: :post, remote: true, class: "btn btn-default", id: key %>

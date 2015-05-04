@@ -9,16 +9,30 @@
     <th>計</th>
   </tr>
   <% (Date.today..(Date.today+7.day)).each do|day| %>
-  <tr>
-    <th><%= day %></th>
+  <% time = 'lunch' %>
+  <tr style="background-color: #fffff5;">
+    <td rowspan="2" style="background-color: #ffffff;vertical-align: middle;"><%= day %></td>
+    <td style="vertical-align: middle">昼</td>
     <% @users.each do |user| %>
-      <% if @schedule[day].include?(user.id) %>
-        <th><%= link_to '食べる!', eat_user_path(user.id, date: day), method: :delete, remote: true, class: "btn btn-danger", id: "#{user.id}-#{day}" %></th>
+      <% if @lunch_schedule[day].include?(user.id) %>
+        <td><%= render 'users/eat', user: user, day: day, time: time %></td>
       <% else%>
-        <th><%= link_to '食べない', eat_user_path(user.id, date: day), method: :post, remote: true, class: "btn btn-default", id: "#{user.id}-#{day}" %></th>
+        <td><%= render 'users/dont', user: user, day: day, time: time %></td>
       <% end %>
     <% end %>
-    <th><%= @schedule[day].count %></th>
+    <td id="<%= "#{day}-#{time}" %>-count"><%= @lunch_schedule[day].count %></td>
+  </tr>
+  <% time = 'evening' %>
+  <tr style="background-color: #f1f7ff;">
+    <td style="vertical-align: middle">夜</td>
+    <% @users.each do |user| %>
+      <% if @evening_schedule[day].include?(user.id) %>
+        <td><%= render 'users/eat', user: user, day: day, time: time %></td>
+      <% else%>
+        <td><%= render 'users/dont', user: user, day: day, time: time %></td>
+      <% end %>
+    <% end %>
+    <td id="<%= "#{day}-#{time}" %>-count"><%= @evening_schedule[day].count %></td>
   </tr>
   <% end %>
 </table> 
