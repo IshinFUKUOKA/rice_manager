@@ -3,6 +3,7 @@
 <table class="table" >
   <tr>
     <th>日付</th>
+    <th>昼/夜</th>
     <% @users.each do |user| %>
     <th><%= user.name %></th>
     <% end %>
@@ -11,7 +12,7 @@
   <% (Date.today..(Date.today+7.day)).each do|day| %>
   <% time = 'lunch' %>
   <tr style="background-color: #fffff5;">
-    <td rowspan="2" style="background-color: #ffffff;vertical-align: middle;"><%= day %></td>
+    <td rowspan="2" style="background-color: #fffff7;vertical-align: middle;"><%= day %></td>
     <td style="vertical-align: middle">昼</td>
     <% @users.each do |user| %>
       <% if @lunch_schedule[day].include?(user.id) %>
