@@ -8,4 +8,8 @@ class HomeController < ApplicationController
       @evening_schedule[day] = EveningBooking.with_date(day).pluck(:user_id)
     end
   end
+
+  def manage
+    @users = User.all
+  end
 end
