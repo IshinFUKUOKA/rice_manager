@@ -5,8 +5,11 @@ Rails.application.routes.draw do
     member do
       post '/eat' => 'users#eat'
       delete '/eat' => 'users#dont'
+      patch '/comment' => 'users#comment'
     end
   end
+
+  resources :rice, only: [:index, :create]
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

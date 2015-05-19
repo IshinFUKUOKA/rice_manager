@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150504072201) do
+ActiveRecord::Schema.define(version: 20150512111150) do
 
   create_table "bookings", force: true do |t|
     t.date     "booked_at"
@@ -21,10 +21,20 @@ ActiveRecord::Schema.define(version: 20150504072201) do
     t.string   "type"
   end
 
+  create_table "rice", force: true do |t|
+    t.string   "name"
+    t.integer  "price"
+    t.integer  "buyer_id"
+    t.datetime "purchased_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "users", force: true do |t|
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "comment"
   end
 
 end

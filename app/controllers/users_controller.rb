@@ -16,11 +16,21 @@ class UsersController < ApplicationController
     end
   end
 
+  def comment
+    @user = User.find(params[:id])
+    @user.update(comment: params[:user][:comment])
+    render nothing: true
+  end
+
   private
   def retrieve_params
     @user = User.find(params[:id])
     @day = params[:date]
     @time = params[:time]
     @id = "#{@user.id}-#{@day}-#{@time}"
+  end
+
+  def user_params
+    params.require(:users).permit(:name, :comment)
   end
 end

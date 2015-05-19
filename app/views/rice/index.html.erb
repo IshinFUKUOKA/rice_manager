@@ -1,0 +1,21 @@
+<h1>米の管理</h1>
+
+<%= render 'common/menu' %>
+<table class="table" >
+  <tr>
+    <th>購入日</th>
+    <th>品種</th>
+    <th>値段</th>
+    <th>購入者</th>
+  </tr>
+  <% @rice_history.each do|r| %>
+  <tr style="background-color: #fffff5;">
+    <td><%= r.purchased_at.strftime("%Y-%m-%d") %></td>
+    <td><%= r.name || 'nil' %></td>
+    <td><%= r.price %></td>
+    <td><%= r.buyer.name %></td>
+  </tr>
+<% end %>
+</table> 
+
+<%= render 'form' %>
