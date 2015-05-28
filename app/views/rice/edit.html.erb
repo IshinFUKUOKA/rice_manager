@@ -1,6 +1,6 @@
+<h2>編集フォーム</h2>
 <div style="width: 20%; margin: 10px; padding: 8px;border: 4px solid #eeeec3;">
-<h3>購入登録フォーム</h3>
-<%= form_for(@rice) do |f| %>
+  <%= form_for(@rice, url: {action: :update}) do |f| %>
   <div class="form-group">
     <label for="inputPurchased_at">購入日時</label><br/ >
     <%= f.datetime_select :purchased_at, use_month_numbers: true, class: "form-control" %>
@@ -17,6 +17,6 @@
     <label for="inputPrice">値段</label><br />
     <%= f.number_field :price, placeholder: '値段', class: "form-control" %>
   </div>
-    <%= f.submit '送信', class: 'btn btn-small btn-primary' %>
+    <%= f.submit '更新', class: 'btn btn-small btn-primary' %>
 <% end %>
 </div>
